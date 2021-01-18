@@ -1,6 +1,9 @@
 .About {
-  background-color: #ffcb69;
+  display: flex;
+  margin: 0 auto;
+  background-color: #ffc55a;
   border-radius: 1rem;
   padding: 2rem;
-  width: px;
+  max-width: 900px;
+  margin-top: 20px !important;
 }
