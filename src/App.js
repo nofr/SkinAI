@@ -1,15 +1,16 @@
-import logo from './logo.svg';
+import logo from "./logo.svg";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import About from "./Components/About/About";
+import "./App.css";
 
 function App() {
   return (
     <Router>
-      <CustomNavbar />
       <Switch>
-        <Route path="/prediction">
-        </Route>
+        <Route path="/prediction"></Route>
         <Route path="/">
+          <About />
         </Route>
       </Switch>
     </Router>
