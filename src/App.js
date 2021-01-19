@@ -25,11 +25,14 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path="/prediction"></Route>
+          <diV className="my-container">
+             <Route path="/prediction"></Route>
           <Route path="/">
             <Slides />
             <UploadForm />
-          </Route>
+          </Route>         
+          </diV>
+
         </Switch>
       </Router>
     </Authentication.Provider>

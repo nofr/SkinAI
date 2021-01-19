@@ -10,11 +10,14 @@
 .nav-container {
     width: 100%;
     display:flex;
+    position: fixed;
+    top: 0px;
     min-height: 7vh;
     align-items: center;
     justify-content: space-between;
     background-color: whitesmoke;
     border-bottom: 1px solid #36d68b;
+    z-index: 3;
 }
 
 .nav-links-container {
@@ -91,4 +94,18 @@
     border-radius: 10px;
     background-color: #36d68b;
     color: #ffffff;
+}
+
+@media (max-width: 650px) {
+    .logo {
+        display: none;
+    }
+    .nav-links-container {
+        width: 100%;
+    }
+    .nav-container {
+        border-top: 1px solid #36d68b;
+        top: initial;
+        bottom: 0px !important;
+    }
 }
