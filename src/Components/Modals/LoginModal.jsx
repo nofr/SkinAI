@@ -6,6 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Authentication } from '../../Contexts/Authentication'
 import Modal from 'react-modal';
+import { signInSuccess } from '../../Tools/WebsiteResponses';
 
 const LoginModal = (props) => {
     const [input, setInput] = useState(null) // Get input
@@ -22,7 +23,8 @@ const LoginModal = (props) => {
         axios.post(`${BASE_URL}/login`, input)
         .then(res => {
             if (res.status === 200) {
-                setIsLogged(true)
+                signInSuccess()
+                setIsLogged(true);
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('sessionID', res.data.user._id)
             }

@@ -6,6 +6,8 @@ import {Container,Form, Button, Dropdown} from 'react-bootstrap'
 import './UploadForm.css'
 import {Redirect} from 'react-router'
 import {BASE_URL} from '../../App'
+import { displayFormDoctorImage } from '../../Tools/WebsiteResponses';
+import ModalDoctorDisplay from './ModalDoctorDisplay.png';
 
 const UploadForm = () => {
     const [infos, setInfos] = useState(null)
@@ -59,7 +61,7 @@ const UploadForm = () => {
     }
 
     useEffect(() => {
-
+        displayFormDoctorImage(ModalDoctorDisplay);
     }, [])
 
     if(redirect) {
@@ -70,14 +72,13 @@ const UploadForm = () => {
     return (
         <Container>
         <Form action="" className="upload-form" onSubmit={e=> uploadImage(e)} method="post" enctype="multipart/form-data">
-            <input type="file" ref={ref} id="hidden" onChange={(e) => {     
+        <input type="file" ref={ref} id="hidden" onChange={(e) => {     
                 const file = e.target.files[0]
                 const reader = new FileReader()
                 reader.onload = (e) => {
                     setPreviewPic(e.target.result)
                 }
                 reader.readAsDataURL(file)
-                setPic({selectedFile :e.target.files[0]})
                 } }/>
             <div className="image-upload" onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle}  icon={faCamera}/></div>
             {previewPic && <div className="image-preview"><img src={previewPic} alt="loaded pic" /></div>}

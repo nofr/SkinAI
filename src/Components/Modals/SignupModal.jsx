@@ -6,6 +6,7 @@ import { useContext, useState } from 'react'
 import {Form, Button} from 'react-bootstrap'
 import {BASE_URL} from '../../App'
 import { Authentication } from '../../Contexts/Authentication'
+import { signUpSuccess } from '../../Tools/WebsiteResponses';
 
 const SignupModal = (props) => {
     const [input, setInput] = useState(null)  // Get input
@@ -21,7 +22,8 @@ const SignupModal = (props) => {
         axios.post(`${BASE_URL}/signup`, input)
         .then(res => {
             if (res.status === 200) {
-                setIsLogged(true)
+                setIsLogged(true);
+                signUpSuccess();
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('sessionID', res.data.user._id)
             }
