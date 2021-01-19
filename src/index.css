@@ -6,13 +6,31 @@ body {
 }
 
 .my-container{
-  position: relative;
+  position: absolute;
   top: 7vh
 }
+.open-upload-form {
+  position: relative;
+  top: 90px;
+  margin: 0 auto;
+  width: 140px;
+  height: 50px;
+  background-color: #36d68b;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color: white !important;
+  font-weight: 500;
+  font-size: 19px;
+  cursor: pointer;
+  border-radius: 7px;
+  text-decoration: none !important;
+}
+
 
 @media (max-width: 650px) {
   .my-container {
-    top: initial !important;
+    top: 0vh !important;
     bottom: 7vh !important;
   }
 }

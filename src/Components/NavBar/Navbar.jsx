@@ -1,8 +1,8 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faHome, faSignInAlt, faSignOutAlt, faUserMd } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faPlus, faSignInAlt, faSignOutAlt, faUserMd } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css'
 import {Link} from 'react-router-dom'
-import { useState, useContext } from 'react'
+import { useState, useContext, useRef } from 'react'
 import LoginModal from '../Modals/LoginModal'
 import SignupModal from '../Modals/SignupModal' 
 import LogoutModal from '../Modals/LogoutModal'
@@ -13,7 +13,7 @@ const Navbar = (props) => {
     const [isSignupOpen,setIsSignupOpen] = useState(false);
     const [isLogoutOpen,setIsLogoutOpen] = useState(false);
     const {isLogged, setIsLogged} = useContext(Authentication)
-
+    
     const openLogin = () => {
         setIsLoginOpen(true)
     }
@@ -54,6 +54,9 @@ const Navbar = (props) => {
             <ul className="nav-links-container">
                 <Link to="/"> 
                     <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faHome} size="2x"/></li>
+                </Link>
+                <Link to="/upload"> 
+                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faPlus} size="2x"/></li>
                 </Link>
                 {!isLogged && <li className="nav-links" onClick={openLogin}><FontAwesomeIcon color='#36d68b' icon={faSignInAlt} size="2x"/></li>}
                 {isLogged && <Link to='/'> 

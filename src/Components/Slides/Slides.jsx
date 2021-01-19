@@ -3,9 +3,7 @@ import { Carousel } from "react-bootstrap";
 
 const Slides = () => {
   const carouselStyle = {
-    marginTop: '40px',
     backgroundColor: 'whitesmoke',
-    height: '40vh',
     zIndex: 0
   }
   return (

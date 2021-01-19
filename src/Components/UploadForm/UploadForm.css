@@ -9,6 +9,7 @@
     flex-direction: column;
     align-items: center;
     border-radius: 9px;
+    margin-bottom: 65px !important;
   }
   .upload-form h3 {
     margin: 9px;
