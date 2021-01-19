@@ -29,7 +29,7 @@ const LoginModal = (props) => {
             props.setIsLoginOpen(false)
         })
         .catch(err => {
-            if(err.response.status == 409) {
+            if(err.response.status === 409) {
                 setError(err.response.data.message)
             }
         })
@@ -41,7 +41,7 @@ const LoginModal = (props) => {
         margin: '10px', 
         padding: '7px',
         borderRadius: '9px',
-        backgroundColor: '#ffc55a'
+        backgroundColor: 'whitesmoke'
     }
 
     const goToSignup = () => {
@@ -58,7 +58,7 @@ const LoginModal = (props) => {
           closeLogin={props.closeLogin}
             >
             <span onClick={() => props.setIsLoginOpen(false)} className='modal-close-btn'><FontAwesomeIcon icon={faTimes}/></span>
-            <h2 style={{textAlign: 'center', color: '#ffc55a'}}>Login</h2>
+            <h2 style={{textAlign: 'center', color: '#434343'}}>Login</h2>
             <Form className ='login-form' onSubmit={logIn}>
                 <Form.Control type="email" name="email" placeholder="Email" onChange={e=>handleChange(e)}/>
                 <Form.Control type="password" name="password" placeholder="Password" onChange={e=>handleChange(e)}/>

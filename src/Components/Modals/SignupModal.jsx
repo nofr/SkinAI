@@ -30,7 +30,7 @@ const SignupModal = (props) => {
             const error = err.response.data
             // Define error message based on API
             const errorType = error.message || error.firstName || error.lastName || error.phone 
-            if(err.response.status == 409) {
+            if(err.response.status === 409) {
                 setError(errorType)
             }
         })
@@ -42,7 +42,7 @@ const SignupModal = (props) => {
         marginTop: '10px', 
         padding: '7px',
         borderRadius: '9px',
-        backgroundColor: '#ffc55a'
+        backgroundColor: 'whitesmoke'
     }
 
     const goToLogin = () => {
@@ -59,7 +59,7 @@ const SignupModal = (props) => {
         closeLogin={props.closeSignup}
           >
         <span onClick={goToLogin} className='modal-close-btn'><FontAwesomeIcon icon={faArrowLeft}/></span>
-        <h2 style={{textAlign: 'center', color: '#ffc55a'}}>Signup</h2>
+        <h2 style={{textAlign: 'center', color: '#434343'}}>Signup</h2>
         <Form className ='login-form' onSubmit={signUp}>
             <Form.Control type="email" name="email" placeholder="Email" onChange={e=>handleChange(e)}/>
             <Form.Control type="password" name="password" placeholder="Password" onChange={e=>handleChange(e)}/>
