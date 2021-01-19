@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import About from "./Components/About/About";
+import Slides from "./Components/Slides/Slides";
 import Navbar from "./Components/NavBar/Navbar";
 import { useEffect, useState } from "react";
 import { Authentication } from './Contexts/Authentication';
+import UploadForm from "./Components/UploadForm/UploadForm";
 
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -12,7 +13,7 @@ function App() {
   const token = localStorage.getItem('token')
 
   useEffect(() => {
-    if(localStorage.getItem('token')) {
+    if(token) {
       setIsLogged(true)
     } else {
       setIsLogged(false)
@@ -26,7 +27,8 @@ function App() {
         <Switch>
           <Route path="/prediction"></Route>
           <Route path="/">
-            <About />
+            <Slides />
+            <UploadForm />
           </Route>
         </Switch>
       </Router>

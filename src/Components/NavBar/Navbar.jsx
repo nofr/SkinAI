@@ -3,7 +3,6 @@ import { faHome, faSignInAlt, faSignOutAlt, faUserMd } from '@fortawesome/free-s
 import './Navbar.css'
 import {Link} from 'react-router-dom'
 import { useState, useContext } from 'react'
-import Modal from 'react-modal';
 import LoginModal from '../Modals/LoginModal'
 import SignupModal from '../Modals/SignupModal' 
 import LogoutModal from '../Modals/LogoutModal'
@@ -35,7 +34,7 @@ const Navbar = (props) => {
         content : {
           borderRadius          : '13px',
           border                : '1px solid black',
-          backgroundColor       : '#36d68b',
+          backgroundColor       : 'whitesmoke',
           top                   : '50%',
           left                  : '50%',
           right                 : 'auto',

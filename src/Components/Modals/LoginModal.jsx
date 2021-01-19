@@ -29,7 +29,7 @@ const LoginModal = (props) => {
             props.setIsLoginOpen(false)
         })
         .catch(err => {
-            if(err.response.status == 409) {
+            if(err.response.status === 409) {
                 setError(err.response.data.message)
             }
         })

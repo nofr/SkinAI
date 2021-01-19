@@ -30,7 +30,7 @@ const SignupModal = (props) => {
             const error = err.response.data
             // Define error message based on API
             const errorType = error.message || error.firstName || error.lastName || error.phone 
-            if(err.response.status == 409) {
+            if(err.response.status === 409) {
                 setError(errorType)
             }
         })

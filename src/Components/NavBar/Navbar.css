@@ -70,10 +70,10 @@
  .login-btn:hover,
    .login-btn:active {
     font-weight: 500;
-    color: #000000 !important;
+    color: #ffffff !important;
     margin: 10px;
-    background-color: #ffffff !important;
-    border: 1px solid #000000 !important;
+    background-color: #36d68b !important;
+    border: 1px solid #ffffff !important;
 }
 .login-btn:focus{
     box-shadow: 0 0 0 .2rem #808080 !important;
@@ -89,6 +89,6 @@
     padding: 5px 0px;
     border: 1px solid #000000;
     border-radius: 10px;
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #36d68b;
+    color: #ffffff;
 }
