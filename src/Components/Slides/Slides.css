@@ -37,6 +37,7 @@
 
 @media (max-width: 768px) {
   .carousel {
+    top: 30px;
     height: 45vh !important;
   }
 }

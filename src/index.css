@@ -9,3 +9,10 @@ body {
   position: relative;
   top: 7vh
 }
+
+@media (max-width: 650px) {
+  .my-container {
+    top: initial !important;
+    bottom: 7vh !important;
+  }
+}
