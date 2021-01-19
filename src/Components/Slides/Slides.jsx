@@ -6,7 +6,7 @@ const Slides = () => {
     marginTop: '40px',
     backgroundColor: 'whitesmoke',
     height: '40vh',
-
+    zIndex: 0
   }
   return (
     <div>

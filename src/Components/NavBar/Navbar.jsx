@@ -43,7 +43,8 @@ const Navbar = (props) => {
           transform             : 'translate(-50%, -50%)',
           display               : 'flex',
           flexDirection : 'column',
-          justifyContent : 'center'
+          justifyContent : 'center',
+          zIndex: 3
         }
       };
 
