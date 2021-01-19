@@ -5,17 +5,16 @@ import {Link} from 'react-router-dom'
 import { useState, useContext, useRef } from 'react'
 import LoginModal from '../Modals/LoginModal'
 import SignupModal from '../Modals/SignupModal' 
-import LogoutModal from '../Modals/LogoutModal'
 import { Authentication } from '../../Contexts/Authentication';
+import { confirmLogout } from '../../Tools/WebsiteResponses';
 
 const Navbar = (props) => {
     const [isLoginOpen,setIsLoginOpen] = useState(false);
     const [isSignupOpen,setIsSignupOpen] = useState(false);
-    const [isLogoutOpen,setIsLogoutOpen] = useState(false);
     const {isLogged, setIsLogged} = useContext(Authentication)
     
     const openLogin = () => {
-        setIsLoginOpen(true)
+        setIsLoginOpen(true);
     }
     const closeLogin = () => {
         setIsLoginOpen(false)
@@ -24,7 +23,7 @@ const Navbar = (props) => {
         setIsSignupOpen(false)
     }
     const handleLogout = () => {
-        setIsLogoutOpen(true)
+        confirmLogout(setIsLogged);
     }
     
     const modalStyle = {
@@ -67,8 +66,7 @@ const Navbar = (props) => {
                 }
             </ul>
             <LoginModal setIsLoginOpen={setIsLoginOpen} setIsSignupOpen={setIsSignupOpen} isLoginOpen={isLoginOpen} closeLogin={closeLogin} modalStyle={modalStyle}/>
-            <SignupModal setIsLoginOpen={setIsLoginOpen} setIsSignupOpen={setIsSignupOpen} isSignupOpen={isSignupOpen} closeLogin={closeSignup} modalStyle={modalStyle}/>
-            <LogoutModal setIsLogoutOpen={setIsLogoutOpen} isLogoutOpen={isLogoutOpen} modalStyle={modalStyle}/>            
+            <SignupModal setIsLoginOpen={setIsLoginOpen} setIsSignupOpen={setIsSignupOpen} isSignupOpen={isSignupOpen} closeLogin={closeSignup} modalStyle={modalStyle}/>         
         </div>
     )
 }
