@@ -35,7 +35,7 @@ const Navbar = (props) => {
         content : {
           borderRadius          : '13px',
           border                : '1px solid black',
-          backgroundColor       : '#997b66',
+          backgroundColor       : '#36d68b',
           top                   : '50%',
           left                  : '50%',
           right                 : 'auto',
@@ -53,14 +53,14 @@ const Navbar = (props) => {
             <div className="logo"> SkinAI </div>
             <ul className="nav-links-container">
                 <Link to="/"> 
-                    <li className="nav-links"><FontAwesomeIcon color='#ffc55a' icon={faHome} size="2x"/></li>
+                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faHome} size="2x"/></li>
                 </Link>
-                {!isLogged && <li className="nav-links" onClick={openLogin}><FontAwesomeIcon color='#ffc55a' icon={faSignInAlt} size="2x"/></li>}
+                {!isLogged && <li className="nav-links" onClick={openLogin}><FontAwesomeIcon color='#36d68b' icon={faSignInAlt} size="2x"/></li>}
                 {isLogged && <Link to='/'> 
-                    <li className="nav-links"><FontAwesomeIcon color='#ffc55a' icon={faUserMd} size="2x"/></li>
+                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faUserMd} size="2x"/></li>
                 </Link>}
                 {isLogged && 
-                    <li className="nav-links"><FontAwesomeIcon color='#ffc55a' onClick={handleLogout}icon={faSignOutAlt} size="2x"/></li>
+                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' onClick={handleLogout}icon={faSignOutAlt} size="2x"/></li>
                 }
             </ul>
             <LoginModal setIsLoginOpen={setIsLoginOpen} setIsSignupOpen={setIsSignupOpen} isLoginOpen={isLoginOpen} closeLogin={closeLogin} modalStyle={modalStyle}/>
