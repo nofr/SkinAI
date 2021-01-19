@@ -94,7 +94,7 @@ const UploadForm = () => {
                         <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Button type="submit"> Add an item </Button>
+                <Button type="submit"> Submit for results </Button>
             </Form>
         </Container>
     )
