@@ -34,26 +34,27 @@ const UploadForm = () => {
         setInfos({...infos, category: e.target.name})
     }
 
-    const postItem = (e) => {
+    const uploadImage = (e) => {
         e.preventDefault()
         const data = new FormData()
         for(let key in infos) {
             data.append(key, infos[key])
         }
         if(pic.selectedFile) {
-            data.append('image', pic.selectedFile, `${Date.now()}-${pic.selectedFile.name}`)
+            data.append('image', pic.selectedFile)
         }
-        axios.post(`${BASE_URL}/item`, data, {headers: {'Authorization' : 'Bearer ' + localStorage.getItem('token')}})
+        axios.post(`${BASE_URL}/upload-image`, data)
             .then(res => {
                 if(res.status === 200) {
                     setRedirect(true)
                 }
             }) // if success so set success & redirect to homepage
             .catch(err => {
+                console.log(err)
                 // fetch error message from server
-                const error = err.response.data 
-                const errorMessages = error.message || error.category || error.name || error.condition || error.description || error.price 
-                console.log(errorMessages)
+                // const error = err.response.data 
+                // const errorMessages = error.message || error.category || error.name || error.condition || error.description || error.price 
+                // console.log(errorMessages)
             })
     }
 
@@ -68,7 +69,7 @@ const UploadForm = () => {
     }
     return (
         <Container>
-        <Form action="" className="upload-form" onSubmit={e=> postItem(e)} encType="multipart/form-data">
+        <Form action="" className="upload-form" onSubmit={e=> uploadImage(e)} method="post" enctype="multipart/form-data">
             <input type="file" ref={ref} id="hidden" onChange={(e) => {     
                 const file = e.target.files[0]
                 const reader = new FileReader()

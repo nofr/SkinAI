@@ -34,4 +34,8 @@ body {
     top: 0vh !important;
     bottom: 7vh !important;
   }
+
+  .open-upload-form {
+    margin-bottom: 30vh !important;
+  }
 }
