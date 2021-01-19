@@ -34,7 +34,7 @@ const signInSuccess = () => {
   })
 }
 
-const formIssue = (msg) => {
+const formImageIssue = (msg) => {
   return Swal.fire({
     title: msg,
     icon: 'error',
@@ -71,13 +71,13 @@ const confirmLogout = (setAuthenticated) => {
 
 const displayFormDoctorImage = (image) => {
   Swal.fire({
-    title: 'Please make sure to follow our image instructions',
-    text: "This is to make sure we're able to help you the best we can",
+    title: 'Please make sure to follow our image instructions.',
+    text: "This is to make sure we're able to help you the best we can.",
     imageUrl: image,
     imageWidth: 400,
     imageHeight: 300,
-    imageAlt: 'Skin Image',
+    imageAlt: 'Instructions Alert',
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, formIssue, confirmLogout, displayFormDoctorImage };
+export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, formImageIssue, confirmLogout, displayFormDoctorImage };
