@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import { useContext, useState } from 'react'
 import {Form, Button} from 'react-bootstrap'
-import {BASE_URL} from '../../App'
 import { Authentication } from '../../Contexts/Authentication'
 import { signUpSuccess } from '../../Tools/WebsiteResponses';
+import url from '../../Tools/URLs';
 
 const SignupModal = (props) => {
     const [input, setInput] = useState(null)  // Get input
@@ -19,7 +19,7 @@ const SignupModal = (props) => {
     }
     const signUp = (e) => {
         e.preventDefault()
-        axios.post(`${BASE_URL}/signup`, input)
+        axios.post(`${url}/signup`, input)
         .then(res => {
             if (res.status === 200) {
                 setIsLogged(true);
