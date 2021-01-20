@@ -16,6 +16,9 @@
   margin-top: 25px;
 }
 .carousel-control-next, .carousel-control-prev {
+  position: fixed;
+  top: 50px;
+  height: 200px;
   width: 5%
 }
 .carousel-control-next-icon, .carousel-control-prev-icon {

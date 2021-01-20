@@ -40,6 +40,7 @@
     color: white;
   }
   .upload-input {
+    width: 50% !important;
     margin: 10px;
     border: 1px solid #36d68b48 !important;
   }
