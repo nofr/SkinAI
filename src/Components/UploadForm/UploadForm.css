@@ -8,6 +8,7 @@
 }
 
 .upload-form {
+  position: relative;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -16,12 +17,23 @@
     max-width: 600px;
     border: 1px solid #9d9d9db1;
     background-color: #36d68b48;
-  
     margin-bottom: 65px !important;
     width: 70%;
   }
   .instructions {
-    font-size: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 9px;
+    max-width: 600px;
+    border: 1px solid #9d9d9db1;
+    background-color: #36d68b48;
+    margin-bottom: 25px !important;
+    width: 70%;
+    }
+
+  .instructions h5 {
+    font-size: 17px;
   }
   .upload-form h3 {
     margin: 9px;

@@ -7,6 +7,7 @@ import { Authentication } from "./Contexts/Authentication";
 import UploadForm from "./Components/UploadForm/UploadForm";
 import "./App.css";
 import Prediction from "./Components/Prediction/Prediction";
+import HomeImages from "./Components/HomeImages/HomeImages";
 
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -43,6 +44,7 @@ function App() {
                   </div>
                 </Link>
               }
+              <HomeImages/>
             </div>
           </Route>
         </Switch>
