@@ -7,6 +7,7 @@ import { Authentication } from "./Contexts/Authentication";
 import UploadForm from "./Components/UploadForm/UploadForm";
 import "./App.css";
 import Prediction from "./Components/Prediction/Prediction";
+import HomeImages from './Components/HomeImages/HomeImages';
 
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -37,13 +38,15 @@ function App() {
             <div className="my-container">
               <Slides />
               {
-                <Link to="/upload" className="open-upload-form">
-                  <div>
-                    <div> Upload </div>
-                  </div>
-                </Link>
+                <div>
+                  <Link to="/upload" className="open-upload-form">
+                    <div>
+                      <div> Upload </div>
+                    </div>
+                  </Link>
+                  <HomeImages />
+                </div>
               }
-              {/* <UploadForm /> */}
             </div>
           </Route>
         </Switch>

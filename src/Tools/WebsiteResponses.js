@@ -53,6 +53,15 @@ const itemUploaded = (msg) => {
   })
 }
 
+const loggedOut = () => {
+  return Swal.fire({
+    title: "Logged out",
+    icon: 'error',
+    timer: 1000,
+    showConfirmButton: false,
+  })
+}
+
 const confirmLogout = (setAuthenticated) => {
   return Swal.fire({
     text: "Logout?",
@@ -65,6 +74,7 @@ const confirmLogout = (setAuthenticated) => {
     if (result.isConfirmed) {
       setAuthenticated(false);
       localStorage.clear();
+      loggedOut();
     }
   })
 }

@@ -6,8 +6,8 @@ body {
 }
 
 .my-container{
-  position: absolute;
-  top: 7vh
+  position: relative;
+  top: 7vh;
 }
 .open-upload-form {
   position: relative;
@@ -25,7 +25,6 @@ body {
   cursor: pointer;
   border-radius: 7px;
   text-decoration: none !important;
-  margin-bottom: 10vh;
 }
 
 
@@ -33,9 +32,5 @@ body {
   .my-container {
     top: 0vh !important;
     bottom: 7vh !important;
-  }
-
-  .open-upload-form {
-    margin-bottom: 30vh !important;
   }
 }
