@@ -10,7 +10,6 @@ import { Redirect } from 'react-router'
 import { itemUploaded, formImageIssue, displayFormDoctorImage,redirecting } from '../../Tools/WebsiteResponses';
 import ModalDoctorDisplay from './ModalDoctorDisplay.png';
 import ImageCrop from '../ImageCrop/ImageCrop';
-
 import url from '../../Tools/URLs';
 
 
@@ -143,7 +142,6 @@ const UploadForm = () => {
                     </Dropdown>
                         {!loading ? <Button type="submit"> Submit </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>}
                         </>}
-
                         </Form>
 
                    

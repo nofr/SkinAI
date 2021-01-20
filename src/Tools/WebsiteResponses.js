@@ -1,4 +1,5 @@
 const Swal = require('sweetalert2');
+const axios = require('axios');
 
 const invalidFields = (message) => {
   return Swal.fire({
@@ -99,4 +100,41 @@ const redirecting = () => {
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, formImageIssue, confirmLogout, displayFormDoctorImage,redirecting };
+const askForAllResultsDelete = (url, config) => {
+  return Swal.fire({
+    title: "Your results will be deleted and can't be recovered.",
+    text: "Are you sure?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.delete(`${url}/remove-history`, config)
+        .then(res => window.location.reload())
+        .catch(err => console.log("Couldn't delete all results from the database"));
+    }
+  })
+}
+
+const askForOneResultDelete = (id, url, config) => {
+  return Swal.fire({
+    title: "Your results will be deleted and can't be recovered.",
+    text: "Are you sure?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      console.log(url)
+      axios.delete(`${url}/remove/${id}`, config)
+        .then(res => window.location.reload())
+        .catch(err => console.log("Couldn't delete result from the database"));
+    }
+  })
+}
+
+export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, formImageIssue, confirmLogout, displayFormDoctorImage, redirecting, askForAllResultsDelete, askForOneResultDelete };

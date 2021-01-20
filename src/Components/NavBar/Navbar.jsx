@@ -60,7 +60,7 @@ const Navbar = (props) => {
                     <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faPlus} size="2x" /></li>
                 </Link>
                 {!isLogged && <li className="nav-links" onClick={openLogin}><FontAwesomeIcon color='#36d68b' icon={faSignInAlt} size="2x" /></li>}
-                {isLogged && <Link to='/'>
+                {isLogged && <Link to={`/user/${localStorage.getItem('sessionID')}`}>
                     <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faUserMd} size="2x" /></li>
                 </Link>}
                 {isLogged &&
