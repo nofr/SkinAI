@@ -25,7 +25,7 @@ const UploadForm = () => {
     const [sendEmail, setSendEmail] = useState(false)
     const [nextForm, goToNextForm] = useState(false)
     const {isLogged, setIsLogged} = useContext(Authentication) 
- 
+
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
     const ref = useRef(null)
@@ -82,7 +82,6 @@ const UploadForm = () => {
         const file = e.target.files[0]
         const reader = new FileReader()
         reader.onload = (e) => {
-            //console.log(e.target.result)
             setPreviewPic(e.target.result)
         }
         reader.readAsDataURL(file)
@@ -123,11 +122,8 @@ const UploadForm = () => {
                                 setImage={setCroppedImage}
                             />
                         </div>}
-
-                        <Button onClick={() => goToNextForm(true)}> Next </Button>
-                        
+                        <Button onClick={() => goToNextForm(true)}> Next </Button>                        
                         </>}
-
                         {nextForm && 
                         <>
                         <div style={{position: 'relative', alignSelf: 'flex-start', marginLeft: '20px', cursor: 'pointer'}} onClick={() => goToPreviousForm()}> <FontAwesomeIcon icon={faArrowLeft} size="2x"/> </div>
