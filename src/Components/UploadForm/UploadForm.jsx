@@ -90,7 +90,10 @@ const UploadForm = () => {
     const goToPreviousForm = () => {
         goToNextForm(false)
     }
+    const checkBoxSwitch = () => {
 
+    }
+    
     if (redirect) {
         return (
             <Redirect to={url} />
@@ -135,6 +138,7 @@ const UploadForm = () => {
                             <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
+                    <input style={{cursor:"pointer"}} type='checkbox' name="sendemail" onClick={checkBoxSwitch} />
                         {!loading ? <Button type="submit"> Submit </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>}
                         </>}
 
