@@ -10,22 +10,30 @@
     margin-top: 7%;
 }
 
+.result-image {
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .text-result { 
-    background-color: transparent;
-    padding: 15px;
+    background-color: transparent;  
+    padding: 25px;
 }
 
 .maps-result {
     display: flex;
     justify-content: center;
-    margin-bottom: 60px;
-}
-.maps-result > button, .maps-result > button:hover {
-    margin-top: 20px;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 870px) {
     .prediction-container {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 399px) {
+    .result-container {
+        width: 100%;
+        margin-left: 0;
     }
 }

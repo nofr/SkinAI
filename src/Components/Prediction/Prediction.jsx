@@ -18,7 +18,7 @@ const Prediction = (props) => {
     <div className='my-container'>
       <div className="result-container">
         <div className='prediction-container mb-5'>
-          <img src="https://source.unsplash.com/random/300x300" className="rounded img-fluid" alt="Result Image" />
+          <div style={{backgroundImage:`url(${"https://source.unsplash.com/random/300x300"})`, minWidth:"299px", minHeight:"250px"}} className="rounded result-image ml-lg-5" alt="Result Image" />
           <Card className='text-result'>
             <h1>Result:</h1>
             <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis itaque, modi inventore quas facere sint veniam vero pariatur soluta eum reiciendis saepe vitae doloribus omnis dolores id error quasi earum.</div>

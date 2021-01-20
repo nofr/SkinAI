@@ -10,7 +10,7 @@ const MapsModal = () => {
 
   return (
     <div className="maps-result">
-      <Button className="login-btn" onClick={handleShow}>
+      <Button className="login-btn mr-lg-5" onClick={handleShow}>
         Find your closest Doctor
       </Button>
       {show && (
