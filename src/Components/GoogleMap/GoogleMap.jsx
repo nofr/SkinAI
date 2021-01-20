@@ -27,26 +27,21 @@ export class MapContainer extends React.Component {
     };
     service.nearbySearch(request, (results, status) => {
       if (status == google.maps.places.PlacesServiceStatus.OK) {
-        console.log("results= " + results);
-        for (const [key, value] of Object.entries(results)) {
-          console.log(`${key}: ${value}`);
-        }
-        //name
-        const image =
-          "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
         for (let i = 0; i < results.length; i++) {
-          //this.addMarker(map,results[i].geometry.location,results[i].name)
-          new google.maps.Marker({
+          const infowindow = new google.maps.InfoWindow({
+            content: 
+            `<p>${results[i].name}</p><p>${results[i].vicinity}</p>`
+          });
+          let marker = new google.maps.Marker({
             position: results[i].geometry.location,
             map: map,
             title: results[i].name,
-            animation: google.maps.Animation.DROP,
+            animation: google.maps.Animation.DROP
+          });
+          marker.addListener("click", () => {
+            infowindow.open(map, marker);
           });
         }
-        /*console.log("results= "+ results[0].geometry.location);
-                for (const [key, value] of Object.entries(results[0].geometry)) {
-                    console.log(`${key}: ${value}`);
-                }*/
       }
     });
   };
