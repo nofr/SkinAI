@@ -110,7 +110,7 @@ const UploadForm = () => {
                         <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                {!loading ? <Button type="submit"> Submit for results </Button> : <Spinner className="mt-1" color="secondary" />
+                {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
                 }
             </Form>
         </Container>
