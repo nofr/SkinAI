@@ -30,25 +30,6 @@ const Prediction = (props) => {
       <MapsModal />
 
     </div>
-    // <Container>
-    //   <Row>
-    //     <Col>
-    //       <Card>
-    //         <Card.Img variant="top" src={pic} className="mt-5"></Card.Img>
-    //       </Card>
-    //     </Col>
-    //     <Col>
-    //       <Card className="mt-5">
-    //         <h1>test</h1>
-    //       </Card>
-    //     </Col>
-    //   </Row>
-    //   <Row>
-    //     <Col md="auto">
-          // <MapsModal />
-    //     </Col>
-    //   </Row>
-    // </Container>
   );
 };
 

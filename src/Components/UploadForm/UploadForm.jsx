@@ -15,7 +15,7 @@ import url from '../../Tools/URLs';
 
 
 const UploadForm = () => {
-    const [infos, setInfos] = useState(null)
+    const [infos, setInfos] = useState({sendemail: false})
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [pic, setPic] = useState({ selectedFile: null })
     const [previewPic, setPreviewPic] = useState("")
@@ -86,6 +86,7 @@ const UploadForm = () => {
         }
         reader.readAsDataURL(file)
         setPic({ selectedFile: e.target.files[0] })
+        // setInfos({sendemail: false})
     }
 
     const goToPreviousForm = (image) => {
@@ -122,7 +123,7 @@ const UploadForm = () => {
                                 setImage={setCroppedImage}
                             />
                         </div>}
-                        <Button onClick={() => goToNextForm(true)}> Next </Button>                        
+                        {pic.selectedFile && <Button onClick={() => goToNextForm(true)}> Next </Button>}                        
                         </>}
                         {nextForm && 
                         <>

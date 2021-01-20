@@ -39,10 +39,10 @@
         justify-content: space-around;
     }
     .image-result {
-        width: 96%;
+        width: 70%;
     }
     
     .text-result { 
-        width: 96%;
+        width: 70%;
     }
 }
