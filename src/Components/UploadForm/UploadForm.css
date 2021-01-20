@@ -40,15 +40,19 @@
     color: white;
   }
   .upload-input {
-    margin: 10px;
     width: 50% !important;
+    margin: 10px;
     border: 1px solid #36d68b48 !important;
   }
   
   .upload-input:focus {
     box-shadow: none !important;
   }
-  
+  .email-input:focus {
+    border: 1px solid #36d68b48 !important;
+    box-shadow: none !important;
+
+  }
   .upload-form > button {
     font-size: 20px;
     color: #ffffff;
@@ -104,4 +108,13 @@
 
   .image-preview img {
     width: 100%
+  }
+
+  .send-email {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
   }

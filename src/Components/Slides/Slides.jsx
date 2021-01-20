@@ -11,7 +11,7 @@ const Slides = () => {
       <Carousel style={carouselStyle}>
         <Carousel.Item className="about">
           <h1>Skin AI</h1>
-          <div>
+          <div className="text">
             The most common early sign of skin cancer is a change in the skin or
             a lesion such as a beauty spot, freckle or mole.
             <br /> Most skin cancers can be cured if caught early. Get to know
@@ -22,10 +22,11 @@ const Slides = () => {
         </Carousel.Item>
         <Carousel.Item className="about">
           <h1>About Us</h1>
-          <div>
+          <div className="text">
             We are a group formed through ITC Fullstack and Data Science and
             decided to solve an issue where we can determine weather you have
-            cancer by uploading a photo of a skin spot.
+            cancer by uploading a photo of a skin spot. We are passionate and
+            love doing what we do.
           </div>
         </Carousel.Item>
       </Carousel>

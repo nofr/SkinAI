@@ -1,8 +1,8 @@
-import { faArrowLeft, faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCamera,faToggleOn, faToggleOff } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
-import { useEffect, useRef, useState } from 'react'
-import { Container, Form, Button, Dropdown, Row } from 'react-bootstrap'
+import { useEffect, useRef, useState, useContext } from 'react'
+import { Form, Button, Dropdown, Row } from 'react-bootstrap'
 import { Spinner } from 'reactstrap';
 import { useHistory } from "react-router-dom";
 import './UploadForm.css'
@@ -10,6 +10,7 @@ import { Redirect } from 'react-router'
 import { itemUploaded, formImageIssue, displayFormDoctorImage,redirecting } from '../../Tools/WebsiteResponses';
 import ModalDoctorDisplay from './ModalDoctorDisplay.png';
 import ImageCrop from '../ImageCrop/ImageCrop';
+import { Authentication } from "../../Contexts/Authentication";
 import url from '../../Tools/URLs';
 
 
@@ -20,9 +21,10 @@ const UploadForm = () => {
     const [previewPic, setPreviewPic] = useState("")
     const [redirect, setRedirect] = useState(false) // in case of success
     const [loading, setLoading] = useState(false);
-    const [croppedImage, setCroppedImage] = useState(null);
-    const [sendEmail, setSendEmail] = useState(false);
-    const [nextForm, goToNextForm] = useState(false);
+    const [croppedImage, setCroppedImage] = useState('bold');
+    const [sendEmail, setSendEmail] = useState(false)
+    const [nextForm, goToNextForm] = useState(false)
+    const {isLogged, setIsLogged} = useContext(Authentication) 
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -86,7 +88,8 @@ const UploadForm = () => {
         setPic({ selectedFile: e.target.files[0] })
     }
 
-    const goToPreviousForm = () => {
+    const goToPreviousForm = (image) => {
+        setCroppedImage(image)
         goToNextForm(false)
     }
 
@@ -94,14 +97,6 @@ const UploadForm = () => {
         return (
             <Redirect to={url} />
         )
-    }
-
-    const checkBoxSwitch = () => {
-        if (sendEmail) {
-            setSendEmail(false)
-        } else if (!sendEmail) {
-            setSendEmail(true)
-        }
     }
 
     return (
@@ -122,6 +117,7 @@ const UploadForm = () => {
                    
                        {previewPic && <div className="image-preview">
                             <ImageCrop
+                                haveCropped={croppedImage && croppedImage}
                                 src={previewPic}
                                 setImage={setCroppedImage}
                             />
@@ -130,9 +126,8 @@ const UploadForm = () => {
                         </>}
                         {nextForm && 
                         <>
-                        <div style={{position: 'relative', alignSelf: 'flex-start', marginLeft: '20px', cursor: 'pointer'}} onClick={goToPreviousForm}> <FontAwesomeIcon icon={faArrowLeft} size="2x"/> </div>
-                         <Form.Control className="upload-input" name="name" placeholder="Name" onChange={e => handleChange(e)} />
-                    <Form.Control className="upload-input" type="number" name="age" placeholder="Age" onChange={e => handleChange(e)} />
+                        <div style={{position: 'relative', alignSelf: 'flex-start', marginLeft: '20px', cursor: 'pointer'}} onClick={() => goToPreviousForm()}> <FontAwesomeIcon icon={faArrowLeft} size="2x"/> </div>
+                    <Form.Control className="upload-input" type="number" name="age" min="0" max="120" placeholder="Age" onChange={e => handleChange(e)} value={(infos && infos.age) && infos.age}/>
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <Dropdown.Toggle caret>{(infos && infos.category) || 'Gender'}</Dropdown.Toggle>
                         <Dropdown.Menu align='right'>
@@ -140,6 +135,21 @@ const UploadForm = () => {
                             <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
+                    <div className="send-email">
+                        <h5> Recieve the result by e-mail ?</h5>
+                        <div className="cstm-checkbox">
+                            {!sendEmail && <FontAwesomeIcon icon={faToggleOff} size='2x' onClick={() => {
+                                setInfos({...infos, sendemail : true})
+                                setSendEmail(true)
+                                }} />}
+                            {sendEmail && <FontAwesomeIcon icon={faToggleOn} size='2x' onClick={() => {
+                                setInfos({...infos, sendemail : false})
+                                setSendEmail(false)
+                                }} />}
+                        </div>
+                        {(sendEmail && !isLogged) && <Form.Control className="email-input" required={sendEmail} type="e mail" name="email" placeholder="Enter your e-mail" onChange={e => handleChange(e)} value={(infos && infos.email) && infos.email}/>}
+                    </div>
+      
                         {!loading ? <Button type="submit"> Submit </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>}
                         </>}
                         </Form>
