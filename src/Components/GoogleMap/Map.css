@@ -1,2 +1,7 @@
-.mapContainer {
+.map-wrapper{
+    width: 500px;
+    height: 500px;
+}
+.modal-body{
+    width: 450px !important;
 }
