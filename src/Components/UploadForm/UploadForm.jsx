@@ -2,7 +2,8 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
-import { Container, Form, Button, Dropdown, Row, Spinner } from 'react-bootstrap'
+import { Container, Form, Button, Dropdown, Row } from 'react-bootstrap'
+import { Spinner } from 'reactstrap';
 import './UploadForm.css'
 import { Redirect } from 'react-router'
 import { itemUploaded, formImageIssue, displayFormDoctorImage } from '../../Tools/WebsiteResponses';
@@ -38,13 +39,12 @@ const UploadForm = () => {
     }
 
     const uploadForm = (e) => {
-        setLoading(true);
+        setLoading(false);
         e.preventDefault()
         const data = new FormData()
         for (let key in infos) {
             data.append(key, infos[key])
         }
-        console.log(pic.selectedFile)
         if (pic.selectedFile) {
             data.append('user', localStorage.getItem('sessionID'));
             data.append('image', pic.selectedFile);
@@ -55,7 +55,7 @@ const UploadForm = () => {
     }
 
     useEffect(() => {
-        displayFormDoctorImage(ModalDoctorDisplay);
+        // displayFormDoctorImage(ModalDoctorDisplay);
     }, [])
 
     const imageUploader = (e) => {
@@ -96,9 +96,8 @@ const UploadForm = () => {
                         <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                {!loading ? <Button type="submit"> Submit for results </Button> : <div class="spinner-border text-primary mt-4" role="status">
-  <span class="sr-only">Loading...</span>
-</div>}
+                {!loading ? <Button type="submit"> Submit for results </Button> : <Spinner className="mt-1" color="secondary" />
+                }
             </Form>
         </Container>
     )
