@@ -14,7 +14,7 @@ import MapsModal from "../GoogleMap/mapsModal";
 
 const Prediction = (props) => {
   const location = useLocation();
-  console.log("test=" + location.state.data);
+  // console.log("test=" + location.state.data);
 
   return (
     <div className='my-container'>
@@ -23,10 +23,8 @@ const Prediction = (props) => {
           <img src="https://source.unsplash.com/random/300x300" alt=""/>
         </Card>
         <Card className='text-result'>
-          <h1>test</h1>
-          <div>hello</div>
-          <div>hello</div>
-          <div>hello</div>
+          <h1>Result:</h1>
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis itaque, modi inventore quas facere sint veniam vero pariatur soluta eum reiciendis saepe vitae doloribus omnis dolores id error quasi earum.</div>
         </Card>
       </div>
       <MapsModal />
