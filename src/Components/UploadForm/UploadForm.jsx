@@ -7,6 +7,7 @@ import './UploadForm.css'
 import { Redirect } from 'react-router'
 import { itemUploaded, formImageIssue, displayFormDoctorImage } from '../../Tools/WebsiteResponses';
 import ModalDoctorDisplay from './ModalDoctorDisplay.png';
+import url from '../../Tools/URLs';
 
 const UploadForm = () => {
     const [infos, setInfos] = useState(null)
@@ -15,7 +16,6 @@ const UploadForm = () => {
     const [previewPic, setPreviewPic] = useState("")
     const [redirect, setRedirect] = useState(false) // in case of success
     const [loading, setLoading] = useState(false);
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -49,7 +49,7 @@ const UploadForm = () => {
             data.append('user', localStorage.getItem('sessionID'));
             data.append('image', pic.selectedFile);
         }
-        axios.post(`${BASE_URL}/upload-image`, data)
+        axios.post(`${url}/upload-image`, data)
             .then(res => itemUploaded('Image Uploaded'), setLoading(false))
             .catch(err => { setLoading(false); formImageIssue("There was an issue uploading your image") });
     }
@@ -71,7 +71,7 @@ const UploadForm = () => {
 
     if (redirect) {
         return (
-            <Redirect to={BASE_URL} />
+            <Redirect to={url} />
         )
     }
     return (

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Authentication } from '../../Contexts/Authentication'
 import Modal from 'react-modal';
 import { signInSuccess } from '../../Tools/WebsiteResponses';
+import url from '../../Tools/URLs';
 
 const LoginModal = (props) => {
     const [input, setInput] = useState(null) // Get input
@@ -20,7 +21,7 @@ const LoginModal = (props) => {
 
     const logIn = (e) => {
         e.preventDefault()
-        axios.post(`${BASE_URL}/login`, input)
+        axios.post(`${url}/login`, input)
         .then(res => {
             if (res.status === 200) {
                 signInSuccess()
