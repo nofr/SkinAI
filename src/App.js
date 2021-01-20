@@ -43,7 +43,6 @@ function App() {
                   </div>
                 </Link>
               }
-              {/* <UploadForm /> */}
             </div>
           </Route>
         </Switch>
