@@ -53,6 +53,15 @@ const itemUploaded = (msg) => {
   })
 }
 
+const loggedOut = () => {
+  return Swal.fire({
+    title: "Logged out",
+    icon: 'error',
+    timer: 1000,
+    showConfirmButton: false,
+  })
+}
+
 const confirmLogout = (setAuthenticated) => {
   return Swal.fire({
     text: "Logout?",
@@ -65,6 +74,7 @@ const confirmLogout = (setAuthenticated) => {
     if (result.isConfirmed) {
       setAuthenticated(false);
       localStorage.clear();
+      loggedOut();
     }
   })
 }
@@ -80,4 +90,13 @@ const displayFormDoctorImage = (image) => {
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, formImageIssue, confirmLogout, displayFormDoctorImage };
+const redirecting = () => {
+  return Swal.fire({
+    title: 'Redirecting',
+    icon: 'success',
+    timer: 2000,
+    showConfirmButton: false,
+  })
+}
+
+export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, formImageIssue, confirmLogout, displayFormDoctorImage,redirecting };
