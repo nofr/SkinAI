@@ -20,8 +20,7 @@ const UploadForm = () => {
     const [previewPic, setPreviewPic] = useState("")
     const [redirect, setRedirect] = useState(false) // in case of success
     const [loading, setLoading] = useState(false);
-    const [croppedImage,setCroppedImage] = useState(null);
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const [croppedImage, setCroppedImage] = useState(null);
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -44,7 +43,7 @@ const UploadForm = () => {
     }
 
     const uploadForm = (e) => {
-        setLoading(false);
+        setLoading(true);
         e.preventDefault()
         const data = new FormData()
         for (let key in infos) {
@@ -52,20 +51,19 @@ const UploadForm = () => {
         }
         if (pic.selectedFile) {
             data.append('user', localStorage.getItem('sessionID'));
-            //data.append('image', pic.selectedFile);
             let img = pic.selectedFile;
-            if(croppedImage){
+            if (croppedImage) {
                 img = croppedImage;
             }
             data.append('image', img);
         }
         axios.post(`${url}/upload-image`, data)
-            .then(res => itemUploaded('Image Uploaded'), setLoading(false))
-            .catch(err => { setLoading(false); formImageIssue("There was an issue uploading your image") });
+            .then((res) => {itemUploaded('Image Uploaded'); setLoading(false)})
+            .catch(err => { formImageIssue("There was an issue uploading your image"); setLoading(false)});
     }
 
     useEffect(() => {
-        // displayFormDoctorImage(ModalDoctorDisplay);
+        displayFormDoctorImage(ModalDoctorDisplay);
     }, [])
 
     const imageUploader = (e) => {
@@ -96,14 +94,13 @@ const UploadForm = () => {
                 </div>
                 <input type="file" name="image" ref={ref} id="hidden" onChange={(e) => imageUploader(e)} />
                 <div className="image-upload" onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle} icon={faCamera} /></div>
-                {previewPic && 
-                <div className="image-preview">
-                    <ImageCrop 
-                    src={previewPic}
-                    setImage={setCroppedImage}
-                    />
-                    {/*<img src={previewPic} alt="loaded pic" />*/}
-                </div>}
+                {previewPic &&
+                    <div className="image-preview">
+                        <ImageCrop
+                            src={previewPic}
+                            setImage={setCroppedImage}
+                        />
+                    </div>}
                 <Form.Control className="upload-input" name="name" placeholder="Name" onChange={e => handleChange(e)} />
                 <Form.Control className="upload-input" type="number" name="age" placeholder="Age" onChange={e => handleChange(e)} />
                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -113,7 +110,7 @@ const UploadForm = () => {
                         <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                {!loading ? <Button type="submit"> Submit for results </Button> : <Spinner className="mt-1" color="secondary" />
+                {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
                 }
             </Form>
         </Container>
