@@ -105,7 +105,7 @@ class ImageCrop extends PureComponent {
             onChange={this.onCropChange}
           />
         )}
-        {croppedImageUrl && (
+        {this.props.haveCropped ? <img alt="Crop" style={{ maxWidth: '100%' }} src={croppedImageUrl} /> : croppedImageUrl && (
           <img alt="Crop" style={{ maxWidth: '100%' }} src={croppedImageUrl} />
         )}
       </div>
