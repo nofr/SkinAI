@@ -3,5 +3,20 @@
     height: 500px;
 }
 .modal-body{
-    width: 450px !important;
+    width: 468px !important;
+    margin-bottom: 30px;
 }
+
+@media (max-width: 500px) {
+    .modal-body{
+        width: 320px !important;
+        margin-bottom: 30px;
+    }
+    .map-wrapper{
+        width: 375px;
+        height: 375px;
+    }
+    .modal-dialog{
+        margin-top: 40px;
+    }
+  }
