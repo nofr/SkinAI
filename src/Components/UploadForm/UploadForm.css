@@ -32,71 +32,72 @@
     width: 45%;
     }
 
-  .instructions h5 {
-    font-size: 17px;
-  }
-  .upload-form h3 {
-    margin: 9px;
-    color: white;
-  }
-  .upload-input {
-    width: 50% !important;
-    margin: 10px;
-    border: 1px solid #36d68b48 !important;
-  }
-  
-  .upload-input:focus {
-    box-shadow: none !important;
-  }
-  .email-input:focus {
-    border: 1px solid #36d68b48 !important;
-    box-shadow: none !important;
+.instructions h5 {
+  font-size: 17px;
+}
+.upload-form h3 {
+  margin: 9px;
+  color: white;
+}
+.upload-input {
+  width: 50% !important;
+  margin: 10px;
+  border: 1px solid #36d68b48 !important;
+}
 
-  }
-  .upload-form > button {
-    font-size: 20px;
-    color: #ffffff;
-    border-radius: 100px !important;
-    margin-top: 30px !important;
-    margin-bottom: 20px !important;
-    background-color: whitesmoke !important;
-    border-color: #747474 !important;
-    color: #747474 !important;
-  }
-  
-  .upload-form > button:hover,
-    upload-form > button:focus,
-      upload-form > button:active {
-    font-size: 20px;
-    color: #000000;
-  }
+.upload-input:focus {
+  box-shadow: none !important;
+}
+.email-input:focus {
+  border: 1px solid #36d68b48 !important;
+  box-shadow: none !important;
+}
+.upload-form > button {
+  font-size: 20px;
+  color: #ffffff;
+  border-radius: 100px !important;
+  margin-top: 30px !important;
+  margin-bottom: 20px !important;
+  background-color: whitesmoke !important;
+  border-color: #747474 !important;
+  color: #747474 !important;
+}
 
-  .image-upload {
-    cursor: pointer;
-    width: 90px;
-    height: 90px;
-    border: 1px solid #ffffff;
-    background-color: #ffffff;
-    border-radius:30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.upload-form > button:hover,
+upload-form > button:focus,
+upload-form > button:active {
+  font-size: 20px;
+  color: #000000;
+}
 
-  #hidden {
-      display: none;
-  }
-  .dropdown {
-    margin-top: 15px;
-    width: 50%;
-  }
-  .dropdown-toggle, .dropdown-toggle:focus {
-    width: 100%;
-    box-shadow: none !important;
-      border-color: #36d68b48 !important;
-      color: #747474 !important;
-    background-color: whitesmoke !important;
-    }
+.image-upload {
+  cursor: pointer;
+  width: 90px;
+  height: 90px;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hidden {
+  display: none;
+}
+.dropdown {
+  margin-top: 15px;
+  width: 50%;
+}
+.dropdown-toggle,
+.dropdown-toggle:focus {
+  width: 100%;
+  box-shadow: none !important;
+  border-color: #36d68b48 !important;
+  color: #747474 !important;
+  background-color: whitesmoke !important;
+}
+
 
   .image-preview {
     width: 100%;
