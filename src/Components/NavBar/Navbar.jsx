@@ -78,7 +78,7 @@ const Navbar = (props) => {
           </li>
         )}
         {isLogged && (
-          <Link to="/">
+          <Link to="/user/:id">
             <li className="nav-links">
               <FontAwesomeIcon color="#36d68b" icon={faUserMd} size="2x" />
             </li>
