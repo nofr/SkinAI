@@ -2,11 +2,12 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
-import { Container, Form, Button, Dropdown, Row } from 'react-bootstrap'
+import { Container, Form, Button, Dropdown, Row, Spinner } from 'react-bootstrap'
 import './UploadForm.css'
 import { Redirect } from 'react-router'
 import { itemUploaded, formImageIssue, displayFormDoctorImage } from '../../Tools/WebsiteResponses';
 import ModalDoctorDisplay from './ModalDoctorDisplay.png';
+import url from '../../Tools/URLs';
 
 const UploadForm = () => {
     const [infos, setInfos] = useState(null)
@@ -14,7 +15,7 @@ const UploadForm = () => {
     const [pic, setPic] = useState({ selectedFile: null })
     const [previewPic, setPreviewPic] = useState("")
     const [redirect, setRedirect] = useState(false) // in case of success
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const [loading, setLoading] = useState(false);
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -37,6 +38,7 @@ const UploadForm = () => {
     }
 
     const uploadForm = (e) => {
+        setLoading(true);
         e.preventDefault()
         const data = new FormData()
         for (let key in infos) {
@@ -47,9 +49,9 @@ const UploadForm = () => {
             data.append('user', localStorage.getItem('sessionID'));
             data.append('image', pic.selectedFile);
         }
-        axios.post(`${BASE_URL}/upload-image`, data)
-            .then(res => itemUploaded('Image Uploaded'))
-            .catch(err => formImageIssue("There was an issue uploading your image"));
+        axios.post(`${url}/upload-image`, data)
+            .then(res => itemUploaded('Image Uploaded'), setLoading(false))
+            .catch(err => { setLoading(false); formImageIssue("There was an issue uploading your image") });
     }
 
     useEffect(() => {
@@ -64,12 +66,12 @@ const UploadForm = () => {
             setPreviewPic(e.target.result)
         }
         reader.readAsDataURL(file)
-        setPic({selectedFile :e.target.files[0]})
+        setPic({ selectedFile: e.target.files[0] })
     }
 
     if (redirect) {
         return (
-            <Redirect to={BASE_URL} />
+            <Redirect to={url} />
         )
     }
     return (
@@ -94,7 +96,9 @@ const UploadForm = () => {
                         <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Button type="submit"> Submit for results </Button>
+                {!loading ? <Button type="submit"> Submit for results </Button> : <div class="spinner-border text-primary mt-4" role="status">
+  <span class="sr-only">Loading...</span>
+</div>}
             </Form>
         </Container>
     )
