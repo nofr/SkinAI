@@ -25,7 +25,8 @@ const Slides = () => {
           <div>
             We are a group formed through ITC Fullstack and Data Science and
             decided to solve an issue where we can determine weather you have
-            cancer by uploading a photo of a skin spot.
+            cancer by uploading a photo of a skin spot. We are passionate and
+            love doing what we do.
           </div>
         </Carousel.Item>
       </Carousel>
