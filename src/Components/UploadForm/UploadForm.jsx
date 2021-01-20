@@ -7,6 +7,7 @@ import './UploadForm.css'
 import { Redirect } from 'react-router'
 import { itemUploaded, formImageIssue, displayFormDoctorImage } from '../../Tools/WebsiteResponses';
 import ModalDoctorDisplay from './ModalDoctorDisplay.png';
+import ImageCrop from '../ImageCrop/ImageCrop';
 
 const UploadForm = () => {
     const [infos, setInfos] = useState(null)
@@ -15,6 +16,7 @@ const UploadForm = () => {
     const [previewPic, setPreviewPic] = useState("")
     const [redirect, setRedirect] = useState(false) // in case of success
     const [loading, setLoading] = useState(false);
+    const [croppedImage,setCroppedImage] = useState(null);
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -47,7 +49,12 @@ const UploadForm = () => {
         console.log(pic.selectedFile)
         if (pic.selectedFile) {
             data.append('user', localStorage.getItem('sessionID'));
-            data.append('image', pic.selectedFile);
+            //data.append('image', pic.selectedFile);
+            let img = pic.selectedFile;
+            if(croppedImage){
+                img = croppedImage;
+            }
+            data.append('image', img);
         }
         axios.post(`${BASE_URL}/upload-image`, data)
             .then(res => itemUploaded('Image Uploaded'), setLoading(false))
@@ -86,7 +93,14 @@ const UploadForm = () => {
                 </div>
                 <input type="file" name="image" ref={ref} id="hidden" onChange={(e) => imageUploader(e)} />
                 <div className="image-upload" onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle} icon={faCamera} /></div>
-                {previewPic && <div className="image-preview"><img src={previewPic} alt="loaded pic" /></div>}
+                {previewPic && 
+                <div className="image-preview">
+                    <ImageCrop 
+                    src={previewPic}
+                    setImage={setCroppedImage}
+                    />
+                    {/*<img src={previewPic} alt="loaded pic" />*/}
+                </div>}
                 <Form.Control className="upload-input" name="name" placeholder="Name" onChange={e => handleChange(e)} />
                 <Form.Control className="upload-input" type="number" name="age" placeholder="Age" onChange={e => handleChange(e)} />
                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
