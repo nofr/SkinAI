@@ -9,8 +9,8 @@ const MapsModal = () => {
   const handleShow = () => setShow(true);
 
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
+    <div className="maps-result">
+      <Button className='login-btn' onClick={handleShow}>
         Find your closest Doctor
       </Button>
       {show && (
@@ -30,7 +30,7 @@ const MapsModal = () => {
           </Modal.Footer>
         </Modal>
       )}
-    </>
+    </div>
   );
 };
 export default MapsModal;
