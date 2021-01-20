@@ -9,6 +9,9 @@
 .about > div {
   font-size: 19px;
 }
+.text {
+  text-align: center;
+}
 .about {
   margin-top: 25px;
 }
