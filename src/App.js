@@ -8,6 +8,7 @@ import UploadForm from "./Components/UploadForm/UploadForm";
 import "./App.css";
 import Prediction from "./Components/Prediction/Prediction";
 import HomeImages from "./Components/HomeImages/HomeImages";
+import UserHistory from "./Components/UserHistory/UserHistory";
 
 export const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/Prediction">
             <Prediction />
+          </Route>
+          <Route path="/user/:id">
+            <UserHistory />
           </Route>
           <Route path="/">
             <div className="my-container">

@@ -152,7 +152,6 @@ const UploadForm = () => {
       
                         {!loading ? <Button type="submit"> Submit </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>}
                         </>}
-
                         </Form>
 
                    
