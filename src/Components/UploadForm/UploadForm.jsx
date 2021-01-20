@@ -127,7 +127,7 @@ const UploadForm = () => {
                         {nextForm && 
                         <>
                         <div style={{position: 'relative', alignSelf: 'flex-start', marginLeft: '20px', cursor: 'pointer'}} onClick={() => goToPreviousForm()}> <FontAwesomeIcon icon={faArrowLeft} size="2x"/> </div>
-                    <Form.Control className="upload-input" type="number" name="age" placeholder="Age" onChange={e => handleChange(e)} value={(infos && infos.age) && infos.age}/>
+                    <Form.Control className="upload-input" type="number" name="age" min="0" max="120" placeholder="Age" onChange={e => handleChange(e)} value={(infos && infos.age) && infos.age}/>
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <Dropdown.Toggle caret>{(infos && infos.category) || 'Gender'}</Dropdown.Toggle>
                         <Dropdown.Menu align='right'>
