@@ -4,6 +4,6 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     url = "http://localhost:3001"
 } else {
     // production code
-    url="https://skin-ai-hackathon.herokuapp.com/";
+    url="https://skin-ai-hackathon.herokuapp.com";
 }
 export default url;

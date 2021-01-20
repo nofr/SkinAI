@@ -1,7 +1,7 @@
 import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import MapContainer from "./MapContainer";
-
+import './Map.css';
 const MapsModal = () => {
   const [show, setShow] = useState(false);
 
@@ -19,7 +19,9 @@ const MapsModal = () => {
             <Modal.Title>Find your closest Doctor</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <MapContainer />
+            <div className="map-wrapper">
+              <MapContainer />
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
