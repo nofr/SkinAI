@@ -1,18 +1,18 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faPlus, faSignInAlt, faSignOutAlt, faUserMd } from '@fortawesome/free-solid-svg-icons'
 import './Navbar.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useState, useContext, useRef } from 'react'
 import LoginModal from '../Modals/LoginModal'
-import SignupModal from '../Modals/SignupModal' 
+import SignupModal from '../Modals/SignupModal'
 import { Authentication } from '../../Contexts/Authentication';
 import { confirmLogout } from '../../Tools/WebsiteResponses';
 
 const Navbar = (props) => {
-    const [isLoginOpen,setIsLoginOpen] = useState(false);
-    const [isSignupOpen,setIsSignupOpen] = useState(false);
-    const {isLogged, setIsLogged} = useContext(Authentication)
-    
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [isSignupOpen, setIsSignupOpen] = useState(false);
+    const { isLogged, setIsLogged } = useContext(Authentication)
+
     const openLogin = () => {
         setIsLoginOpen(true);
     }
@@ -25,48 +25,50 @@ const Navbar = (props) => {
     const handleLogout = () => {
         confirmLogout(setIsLogged);
     }
-    
+
     const modalStyle = {
         overlay: {
-            backgroundColor     : '#2b1d13a0'
+            backgroundColor: '#2b1d13a0'
         },
-        content : {
-          borderRadius          : '13px',
-          border                : '1px solid black',
-          backgroundColor       : 'whitesmoke',
-          top                   : '50%',
-          left                  : '50%',
-          right                 : 'auto',
-          bottom                : 'auto',
-          marginRight           : '-50%',
-          transform             : 'translate(-50%, -50%)',
-          display               : 'flex',
-          flexDirection : 'column',
-          justifyContent : 'center',
-          zIndex: 3
+        content: {
+            borderRadius: '13px',
+            border: '1px solid black',
+            backgroundColor: 'whitesmoke',
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            zIndex: 3
         }
-      };
+    };
 
     return (
         <div className="nav-container">
-            <div className="logo"> SkinAI </div>
+            <Link to="/">
+                <button className="logo"> SkinAI </button>
+            </Link>
             <ul className="nav-links-container">
-                <Link to="/"> 
-                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faHome} size="2x"/></li>
+                <Link to="/">
+                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faHome} size="2x" /></li>
                 </Link>
-                <Link to="/upload"> 
-                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faPlus} size="2x"/></li>
+                <Link to="/upload">
+                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faPlus} size="2x" /></li>
                 </Link>
-                {!isLogged && <li className="nav-links" onClick={openLogin}><FontAwesomeIcon color='#36d68b' icon={faSignInAlt} size="2x"/></li>}
-                {isLogged && <Link to='/'> 
-                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faUserMd} size="2x"/></li>
+                {!isLogged && <li className="nav-links" onClick={openLogin}><FontAwesomeIcon color='#36d68b' icon={faSignInAlt} size="2x" /></li>}
+                {isLogged && <Link to='/'>
+                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' icon={faUserMd} size="2x" /></li>
                 </Link>}
-                {isLogged && 
-                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' onClick={handleLogout}icon={faSignOutAlt} size="2x"/></li>
+                {isLogged &&
+                    <li className="nav-links"><FontAwesomeIcon color='#36d68b' onClick={handleLogout} icon={faSignOutAlt} size="2x" /></li>
                 }
             </ul>
-            <LoginModal setIsLoginOpen={setIsLoginOpen} setIsSignupOpen={setIsSignupOpen} isLoginOpen={isLoginOpen} closeLogin={closeLogin} modalStyle={modalStyle}/>
-            <SignupModal setIsLoginOpen={setIsLoginOpen} setIsSignupOpen={setIsSignupOpen} isSignupOpen={isSignupOpen} closeLogin={closeSignup} modalStyle={modalStyle}/>         
+            <LoginModal setIsLoginOpen={setIsLoginOpen} setIsSignupOpen={setIsSignupOpen} isLoginOpen={isLoginOpen} closeLogin={closeLogin} modalStyle={modalStyle} />
+            <SignupModal setIsLoginOpen={setIsLoginOpen} setIsSignupOpen={setIsSignupOpen} isSignupOpen={isSignupOpen} closeLogin={closeSignup} modalStyle={modalStyle} />
         </div>
     )
 }
