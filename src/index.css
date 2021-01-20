@@ -27,10 +27,6 @@ body {
   text-decoration: none !important;
 }
 
-{
-  background-color: black !important;
-}
-
 .swal2-confirm , 
 .swal2-confirm :hover,
 .swal2-confirm :active {
