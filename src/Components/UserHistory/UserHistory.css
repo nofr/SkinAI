@@ -1,50 +1,57 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .history-grid {
-    display: grid;
-    height: fit-content;
-    width: 70%;
-    margin-left: 15%;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1em;
+  display: grid;
+  height: fit-content;
+  width: 58%;
+  margin-left: 21%;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1em;
 }
 
 .history-image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    max-width: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 400px;
 }
 
 .history-logo {
-    margin-top: 10%;
-    margin-left: 10%;
+  margin-top: 10%;
+  margin-left: 10%;
 }
 
 .delete-all-button {
-    margin-left: 10%;
+  margin-left: 10%;
+}
+
+@media (max-width: 1650px) {
+  .history-grid {
+    width: 70%;
+    margin-left: 15%;
+  }
 }
 
 @media (max-width: 1150px) {
-    .history-grid {
-        width: 80%;
-        margin-left: 10%;
-    }
+  .history-grid {
+    width: 80%;
+    margin-left: 10%;
+  }
 }
 
 @media (max-width: 900px) {
-    .history-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .history-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {
-    .history-grid {
-        grid-template-columns: repeat(1, 1fr);
-        width: 70%;
-        margin-left: 15%;
-        justify-content: center;
-    }
+  .history-grid {
+    grid-template-columns: repeat(1, 1fr);
+    width: 70%;
+    margin-left: 15%;
+    justify-content: center;
+  }
 }
