@@ -14,7 +14,7 @@ import MapsModal from "../GoogleMap/mapsModal";
 
 const Prediction = (props) => {
   const location = useLocation();
-  console.log("test=" + location.state.data);
+  // console.log("test=" + location.state.data);
 
   return (
     <div className='my-container'>
