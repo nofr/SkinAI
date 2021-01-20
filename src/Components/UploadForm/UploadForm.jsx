@@ -93,35 +93,37 @@ const UploadForm = () => {
     }
     return (
         <div className='my-container'>
-            <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
-                <div>
-                    <h5 className="mt-5">1. Keep the spot in the absolute middle of the picture.</h5>
-                    <br />
-                    <h5>2. Make sure the quality of the picture is good enough.</h5>
-                    <br />
-                    <h5>3. Do not take a picture in a dark environment.</h5>
-                </div>
-                <input type="file" name="image" ref={ref} id="hidden" onChange={(e) => imageUploader(e)} />
-                <div className="image-upload" onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle} icon={faCamera} /></div>
-                {previewPic &&
-                    <div className="image-preview">
-                        <ImageCrop
-                            src={previewPic}
-                            setImage={setCroppedImage}
-                        />
-                    </div>}
-                <Form.Control className="upload-input" name="name" placeholder="Name" onChange={e => handleChange(e)} />
-                <Form.Control className="upload-input" type="number" name="age" placeholder="Age" onChange={e => handleChange(e)} />
-                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                    <Dropdown.Toggle caret>{(infos && infos.category) || 'Gender'}</Dropdown.Toggle>
-                    <Dropdown.Menu align='right'>
-                        <Dropdown.Item onClick={(e) => handleSelect(e)} name='Male'> Male </Dropdown.Item>
-                        <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
-                }
-            </Form>
+            <div className='upload-container'>
+                <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
+                    <div className='instructions'>
+                        <h5 className="mt-5">1. Keep the spot in the absolute middle of the picture.</h5>
+                        <br />
+                        <h5>2. Make sure the quality of the picture is good enough.</h5>
+                        <br />
+                        <h5>3. Do not take a picture in a dark environment.</h5>
+                    </div>
+                    <input type="file" name="image" ref={ref} id="hidden" onChange={(e) => imageUploader(e)} />
+                    <div className="image-upload" onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle} icon={faCamera} /></div>
+                    {previewPic &&
+                        <div className="image-preview">
+                            <ImageCrop
+                                src={previewPic}
+                                setImage={setCroppedImage}
+                            />
+                        </div>}
+                    <Form.Control className="upload-input" name="name" placeholder="Name" onChange={e => handleChange(e)} />
+                    <Form.Control className="upload-input" type="number" name="age" placeholder="Age" onChange={e => handleChange(e)} />
+                    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                        <Dropdown.Toggle caret>{(infos && infos.category) || 'Gender'}</Dropdown.Toggle>
+                        <Dropdown.Menu align='right'>
+                            <Dropdown.Item onClick={(e) => handleSelect(e)} name='Male'> Male </Dropdown.Item>
+                            <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
+                    }
+                </Form>
+            </div>
         </div>
     )
 }
