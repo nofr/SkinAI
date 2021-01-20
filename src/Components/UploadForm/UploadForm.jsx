@@ -118,7 +118,7 @@ const UploadForm = () => {
                                 setImage={setCroppedImage}
                             />
                         </div>}
-                        <div style={{marginTop: '10px', fontWeight:'500'}}>Click to upload a picture</div>
+                        {previewPic && <div style={{marginTop: '10px', fontWeight:'500'}}>Click to upload a picture</div>}
                         <Button onClick={() => goToNextForm(true)}> Next </Button>                        
                         </>}
                         {nextForm && 
