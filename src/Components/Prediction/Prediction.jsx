@@ -8,10 +8,14 @@ import {
   Col,
 } from "react-bootstrap";
 import pic from "./Team 12 (1).png";
-import './Prediction.css'
+import './Prediction.css';
+import { useLocation } from "react-router-dom";
 import MapsModal from "../GoogleMap/mapsModal";
 
-const Prediction = () => {
+const Prediction = (props) => {
+  const location = useLocation();
+  console.log("test=" + location.state.data);
+
   return (
     <div className='my-container'>
       <div className='prediction-container'>
