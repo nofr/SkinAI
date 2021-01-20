@@ -97,7 +97,7 @@ const UploadForm = () => {
         )
     }
 
-    checkBoxSwitch = () => {
+    const checkBoxSwitch = () => {
         if (sendEmail) {
             setSendEmail(false)
         } else if (!sendEmail) {
