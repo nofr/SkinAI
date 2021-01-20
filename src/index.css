@@ -7,6 +7,8 @@ body {
 
 .my-container{
   position: absolute;
+  width: 100%;
+  height: 93vh;
   top: 7vh
 }
 .open-upload-form {

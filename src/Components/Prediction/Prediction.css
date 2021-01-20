@@ -1,0 +1,34 @@
+.prediction-container {
+    display: flex;
+    width: 100%;
+    margin-top: 55px
+}
+
+.image-result {
+    width: 50%
+}
+
+.text-result { 
+    width: 50%
+}
+
+.maps-result {
+    display: flex;
+    justify-content: center;
+}
+.maps-result > button {
+    margin-top: 20px;
+}
+
+@media (max-width: 650px) {
+    .prediction-container {
+        flex-direction: column;
+    }
+    .image-result {
+        width: 100%
+    }
+    
+    .text-result { 
+        width: 100%
+    }
+}
