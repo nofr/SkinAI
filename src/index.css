@@ -40,6 +40,9 @@ body {
     box-shadow: 0 0 0 0 !important;
 }
 
+.swal2-header {
+padding: 0 !important;
+}
 
 .swal2-header > h2 {
   margin: 0;
