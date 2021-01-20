@@ -100,7 +100,7 @@ const redirecting = () => {
   });
 };
 
-const askForAllResultsDelete = (url, config) => {
+const askForAllResultsDelete = (url,config,setUserResults) => {
   return Swal.fire({
     title: "Your results will be deleted and can't be recovered.",
     text: "Are you sure?",
@@ -112,13 +112,13 @@ const askForAllResultsDelete = (url, config) => {
   }).then((result) => {
     if (result.isConfirmed) {
       axios.delete(`${url}/remove-history`, config)
-        .then(res => window.location.reload())
+        .then(res => setUserResults(null))
         .catch(err => console.log("Couldn't delete all results from the database"));
     }
   })
 }
 
-const askForOneResultDelete = (id, url, config) => {
+const askForOneResultDelete = (id, url,config,userResults,setUserResults) => {
   return Swal.fire({
     title: "Your results will be deleted and can't be recovered.",
     text: "Are you sure?",
@@ -131,7 +131,12 @@ const askForOneResultDelete = (id, url, config) => {
     if (result.isConfirmed) {
       console.log(url)
       axios.delete(`${url}/remove/${id}`, config)
-        .then(res => window.location.reload())
+        .then(res => {
+          const newResults = userResults.filter((obj) => {
+            return obj.resultId!==id;
+          })
+          setUserResults(newResults);
+        })
         .catch(err => console.log("Couldn't delete result from the database"));
     }
   })
