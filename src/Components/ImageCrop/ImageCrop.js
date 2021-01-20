@@ -97,6 +97,7 @@ class ImageCrop extends PureComponent {
       <div>
         {this.props.src && (
           <ReactCrop
+          className='user-image'
             src={this.props.src}
             crop={crop}
             ruleOfThirds
