@@ -9,8 +9,10 @@ class ImageCrop extends PureComponent {
     this.state = {
         src: null,
         crop: {
-          unit: '%',
-          width: 30,
+          unit: 'px',
+          //width: 30,
+          width: 224,
+          height: 224,
           aspect: 16 / 9,
         },
     };
