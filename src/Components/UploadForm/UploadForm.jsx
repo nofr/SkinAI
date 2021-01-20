@@ -1,4 +1,4 @@
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCamera } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
@@ -22,6 +22,7 @@ const UploadForm = () => {
     const [redirect, setRedirect] = useState(false) // in case of success
     const [loading, setLoading] = useState(false);
     const [croppedImage, setCroppedImage] = useState(null);
+    const [nextForm, goToNextForm] = useState(false)
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -36,7 +37,7 @@ const UploadForm = () => {
 
     const imageUploadStyle = {
         color: "#434343",
-        fontSize: "35px",
+        fontSize: `${previewPic ? `15px` : `35px`}`,
     }
 
     const handleSelect = (e) => {
@@ -86,6 +87,10 @@ const UploadForm = () => {
         setPic({ selectedFile: e.target.files[0] })
     }
 
+    const goToPreviousForm = () => {
+        goToNextForm(false)
+    }
+
     if (redirect) {
         return (
             <Redirect to={url} />
@@ -94,24 +99,34 @@ const UploadForm = () => {
     return (
         <div className='my-container'>
             <div className='upload-container'>
-                <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
-                    <div className='instructions'>
-                        <h5 className="mt-5">1. Keep the spot in the absolute middle of the picture.</h5>
+            <div className='instructions'>
+                        <h5 >1. Keep the spot in the absolute middle of the picture.</h5>
                         <br />
                         <h5>2. Make sure the quality of the picture is good enough.</h5>
                         <br />
                         <h5>3. Do not take a picture in a dark environment.</h5>
                     </div>
+               <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
+                    {!nextForm && 
+                    <>
                     <input type="file" name="image" ref={ref} id="hidden" onChange={(e) => imageUploader(e)} />
-                    <div className="image-upload" onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle} icon={faCamera} /></div>
-                    {previewPic &&
-                        <div className="image-preview">
+                    <div className="image-upload" style={{width: `${previewPic ? `45px` : `90px`}`,height: `${previewPic ? `45px` : `90px`}`}}onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle} icon={faCamera} /></div>
+                   
+                       {previewPic && <div className="image-preview">
                             <ImageCrop
                                 src={previewPic}
                                 setImage={setCroppedImage}
                             />
                         </div>}
-                    <Form.Control className="upload-input" name="name" placeholder="Name" onChange={e => handleChange(e)} />
+
+                        <Button onClick={() => goToNextForm(true)}> Next </Button>
+                        
+                        </>}
+
+                        {nextForm && 
+                        <>
+                        <div style={{position: 'relative', alignSelf: 'flex-start', marginLeft: '20px', cursor: 'pointer'}} onClick={goToPreviousForm}> <FontAwesomeIcon icon={faArrowLeft} size="2x"/> </div>
+                         <Form.Control className="upload-input" name="name" placeholder="Name" onChange={e => handleChange(e)} />
                     <Form.Control className="upload-input" type="number" name="age" placeholder="Age" onChange={e => handleChange(e)} />
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <Dropdown.Toggle caret>{(infos && infos.category) || 'Gender'}</Dropdown.Toggle>
@@ -120,9 +135,13 @@ const UploadForm = () => {
                             <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
-                    }
-                </Form>
+                        {!loading ? <Button type="submit"> Submit </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>}
+                        </>}
+
+                        </Form>
+
+                   
+
             </div>
         </div>
     )
