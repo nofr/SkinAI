@@ -120,7 +120,7 @@ const askForAllResultsDelete = (url,config,setUserResults) => {
 
 const askForOneResultDelete = (id, url,config,userResults,setUserResults) => {
   return Swal.fire({
-    title: "Your results will be deleted and can't be recovered.",
+    title: "Your result will be deleted and can't be recovered.",
     text: "Are you sure?",
     icon: 'warning',
     showCancelButton: true,
