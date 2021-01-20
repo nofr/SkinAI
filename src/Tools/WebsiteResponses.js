@@ -84,8 +84,8 @@ const displayFormDoctorImage = (image) => {
     title: 'Please make sure to follow our image instructions.',
     text: "This is to make sure we're able to help you the best we can.",
     imageUrl: image,
-    imageWidth: 400,
-    imageHeight: 300,
+    imageWidth: 300,
+    imageHeight: 240,
     imageAlt: 'Instructions Alert',
   })
 }

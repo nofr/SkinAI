@@ -87,7 +87,7 @@
     border: 1px solid #ffffff !important;
 }
 .login-btn:focus{
-    box-shadow: 0 0 0 .2rem #808080 !important;
+    box-shadow: 0 0 0 0 !important;
 }
 
 .go-to-signup, .go-to-signup:hover{
@@ -98,8 +98,7 @@
     justify-content:center;
     font-weight: 500;
     padding: 5px 0px;
-    border: 1px solid #000000;
-    border-radius: 10px;
+    border-radius: .25rem;
     background-color: #36d68b;
     color: #ffffff;
 }
