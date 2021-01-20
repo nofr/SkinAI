@@ -91,6 +91,15 @@ const UploadForm = () => {
             <Redirect to={url} />
         )
     }
+
+    checkBoxSwitch = () => {
+        if (sendEmail) {
+            setSendEmail(false)
+        } else if (!sendEmail) {
+            setSendEmail(true)
+        }
+    }
+
     return (
         <div style={{marginTop:"-3%"}} className='my-container mb-3'>
             <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
@@ -121,7 +130,7 @@ const UploadForm = () => {
                 </Dropdown>
                 <div className="mt-4">
                 <label for='checkbox' className="mr-3">Send the results to my email.</label>
-                <input style={{cursor:"pointer"}} type='checkbox' name="sendemail" />
+                <input style={{cursor:"pointer"}} type='checkbox' name="sendemail" onClick={checkBoxSwitch} />
                 </div>
                 {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
                 }
