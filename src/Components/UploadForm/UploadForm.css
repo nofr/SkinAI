@@ -10,7 +10,9 @@
     align-items: center;
     border-radius: 9px;
     margin-bottom: 65px !important;
+    width: 95%;
   }
+
   .upload-form h3 {
     margin: 9px;
     color: white;

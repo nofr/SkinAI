@@ -90,4 +90,13 @@ const displayFormDoctorImage = (image) => {
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, formImageIssue, confirmLogout, displayFormDoctorImage };
+const redirecting = () => {
+  return Swal.fire({
+    title: 'Redirecting',
+    icon: 'success',
+    timer: 2000,
+    showConfirmButton: false,
+  })
+}
+
+export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, formImageIssue, confirmLogout, displayFormDoctorImage,redirecting };

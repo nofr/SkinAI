@@ -4,9 +4,10 @@ import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
 import { Container, Form, Button, Dropdown, Row } from 'react-bootstrap'
 import { Spinner } from 'reactstrap';
+import { useHistory } from "react-router-dom";
 import './UploadForm.css'
 import { Redirect } from 'react-router'
-import { itemUploaded, formImageIssue, displayFormDoctorImage } from '../../Tools/WebsiteResponses';
+import { itemUploaded, formImageIssue, displayFormDoctorImage,redirecting } from '../../Tools/WebsiteResponses';
 import ModalDoctorDisplay from './ModalDoctorDisplay.png';
 import ImageCrop from '../ImageCrop/ImageCrop';
 
@@ -25,7 +26,7 @@ const UploadForm = () => {
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
     const ref = useRef(null)
-
+    const history = useHistory();
     const handleChange = (e) => {
         setInfos({
             ...infos,
@@ -57,8 +58,16 @@ const UploadForm = () => {
             }
             data.append('image', img);
         }
+        redirecting();
         axios.post(`${url}/upload-image`, data)
-            .then((res) => {itemUploaded('Image Uploaded'); setLoading(false)})
+            .then((res) => {
+                itemUploaded('Image Uploaded'); 
+                setLoading(false)
+                history.push({
+                    pathname: '/Prediction',
+                    state: {data: res.data}
+                })
+            })
             .catch(err => { formImageIssue("There was an issue uploading your image"); setLoading(false)});
     }
 
@@ -70,7 +79,7 @@ const UploadForm = () => {
         const file = e.target.files[0]
         const reader = new FileReader()
         reader.onload = (e) => {
-            console.log(e.target.result)
+            //console.log(e.target.result)
             setPreviewPic(e.target.result)
         }
         reader.readAsDataURL(file)
@@ -83,7 +92,7 @@ const UploadForm = () => {
         )
     }
     return (
-        <Container>
+        <div className='my-container'>
             <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
                 <div>
                     <h5 className="mt-5">1. Keep the spot in the absolute middle of the picture.</h5>
@@ -113,7 +122,7 @@ const UploadForm = () => {
                 {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
                 }
             </Form>
-        </Container>
+        </div>
     )
 }
 
