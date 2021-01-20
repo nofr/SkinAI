@@ -1,7 +1,7 @@
 import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import MapContainer from "./MapContainer";
-import './Map.css';
+import "./Map.css";
 const MapsModal = () => {
   const [show, setShow] = useState(false);
 
@@ -10,7 +10,7 @@ const MapsModal = () => {
 
   return (
     <div className="maps-result">
-      <Button className='login-btn' onClick={handleShow}>
+      <Button className="login-btn" onClick={handleShow}>
         Find your closest Doctor
       </Button>
       {show && (
@@ -24,7 +24,10 @@ const MapsModal = () => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button
+              className="login-btn"
+              variant="secondary"
+              onClick={handleClose}>
               Close
             </Button>
           </Modal.Footer>
