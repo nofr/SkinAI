@@ -92,7 +92,7 @@ const UploadForm = () => {
         )
     }
     return (
-        <Container>
+        <div className='my-container'>
             <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
                 <div>
                     <h5 className="mt-5">1. Keep the spot in the absolute middle of the picture.</h5>
@@ -122,7 +122,7 @@ const UploadForm = () => {
                 {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
                 }
             </Form>
-        </Container>
+        </div>
     )
 }
 
