@@ -22,6 +22,7 @@ const UploadForm = () => {
     const [redirect, setRedirect] = useState(false) // in case of success
     const [loading, setLoading] = useState(false);
     const [croppedImage, setCroppedImage] = useState(null);
+    const [sendEmail, setSendEmail] = useState(false);
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -79,7 +80,6 @@ const UploadForm = () => {
         const file = e.target.files[0]
         const reader = new FileReader()
         reader.onload = (e) => {
-            //console.log(e.target.result)
             setPreviewPic(e.target.result)
         }
         reader.readAsDataURL(file)
@@ -92,7 +92,7 @@ const UploadForm = () => {
         )
     }
     return (
-        <div className='my-container'>
+        <div style={{marginTop:"-3%"}} className='my-container mb-3'>
             <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
                 <div>
                     <h5 className="mt-5">1. Keep the spot in the absolute middle of the picture.</h5>
@@ -119,6 +119,10 @@ const UploadForm = () => {
                         <Dropdown.Item onClick={(e) => handleSelect(e)} name='Female'> Female </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
+                <div className="mt-4">
+                <label for='checkbox' className="mr-3">Send the results to my email.</label>
+                <input style={{cursor:"pointer"}} type='checkbox' name="sendemail" />
+                </div>
                 {!loading ? <Button type="submit"> Submit for results </Button> : <div className="mt-1"><Spinner className="mt-4 mb-3" color="secondary" /></div>
                 }
             </Form>

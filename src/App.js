@@ -38,15 +38,14 @@ function App() {
             <div className="my-container">
               <Slides />
               {
-                <div>
-                  <Link to="/upload" className="open-upload-form">
-                    <div>
-                      <div> Upload </div>
-                    </div>
-                  </Link>
-                  <HomeImages />
-                </div>
+                <Link to="/upload" className="open-upload-form">
+                  <div>
+                    <div> Upload </div>
+                  </div>
+                </Link>
               }
+              {/* <UploadForm /> */}
+              <HomeImages />
             </div>
           </Route>
         </Switch>
