@@ -22,7 +22,8 @@ const UploadForm = () => {
     const [redirect, setRedirect] = useState(false) // in case of success
     const [loading, setLoading] = useState(false);
     const [croppedImage, setCroppedImage] = useState(null);
-    const [nextForm, goToNextForm] = useState(false)
+    const [sendEmail, setSendEmail] = useState(false);
+    const [nextForm, goToNextForm] = useState(false);
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -80,7 +81,6 @@ const UploadForm = () => {
         const file = e.target.files[0]
         const reader = new FileReader()
         reader.onload = (e) => {
-            //console.log(e.target.result)
             setPreviewPic(e.target.result)
         }
         reader.readAsDataURL(file)
@@ -96,6 +96,15 @@ const UploadForm = () => {
             <Redirect to={url} />
         )
     }
+
+    checkBoxSwitch = () => {
+        if (sendEmail) {
+            setSendEmail(false)
+        } else if (!sendEmail) {
+            setSendEmail(true)
+        }
+    }
+
     return (
         <div className='my-container'>
             <div className='upload-container'>

@@ -44,7 +44,8 @@ function App() {
                   </div>
                 </Link>
               }
-              <HomeImages/>
+              {/* <UploadForm /> */}
+              <HomeImages />
             </div>
           </Route>
         </Switch>
