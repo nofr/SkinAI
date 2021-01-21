@@ -106,9 +106,11 @@ const UploadForm = () => {
             <div className='instructions'>
                         <h5 >1. Keep the spot in the absolute middle of the picture.</h5>
                         <br />
-                        <h5>2. Make sure not to move too much so the quality is good.</h5>
+                        <h5>2. An image that doesn't contain skin or any beauty spots will give an incorrect result.</h5>
                         <br />
-                        <h5>3. Do not take a picture in a dark environment.</h5>
+                        <h5>3. Make sure not to move too much so the quality is good.</h5>
+                        <br />
+                        <h5>4. Do not take a picture in a dark environment.</h5>
                     </div>
                <Form action="" name="image" className="upload-form" onSubmit={e => uploadForm(e)} method="post" enctype="multipart/form-data">
                     {!nextForm && 
