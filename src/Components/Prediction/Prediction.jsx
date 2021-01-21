@@ -22,6 +22,7 @@ const Prediction = (props) => {
           <Card className='text-result'>
             <h1>Result:</h1>
             <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis itaque, modi inventore quas facere sint veniam vero pariatur soluta eum reiciendis saepe vitae doloribus omnis dolores id error quasi earum.</div>
+            <a href={`https://www.google.com/search?q=${"type"}`} className="mt-3" target="_blank">Google Search {"Type"}</a>
           </Card>
         </div>
         <MapsModal />

@@ -87,6 +87,7 @@ upload-form > button:active {
   margin-top: 15px;
   width: 50%;
 }
+
 .dropdown-toggle,
 .dropdown-toggle:focus {
   width: 100%;
@@ -97,6 +98,7 @@ upload-form > button:active {
 }
 
 .image-preview {
+  flex-direction: column;
   width: 100%;
   padding: 10px;
   border-radius: 12px;
@@ -104,6 +106,7 @@ upload-form > button:active {
 }
 
 .image-preview > div {
+  flex-direction: column;
   display: flex;
   align-items: center;
 }
