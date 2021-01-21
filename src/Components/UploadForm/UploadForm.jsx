@@ -106,7 +106,7 @@ const UploadForm = () => {
             <div className='instructions'>
                         <h5 >1. Keep the spot in the absolute middle of the picture.</h5>
                         <br />
-                        <h5>2. Make sure the quality of the picture is good enough.</h5>
+                        <h5>2. Make sure not to move too much so the quality is good.</h5>
                         <br />
                         <h5>3. Do not take a picture in a dark environment.</h5>
                     </div>
@@ -116,7 +116,7 @@ const UploadForm = () => {
                     <input type="file" name="image" ref={ref} id="hidden" onChange={(e) => imageUploader(e)} />
                     <div className="image-upload" style={{width: `${previewPic ? `45px` : `90px`}`,height: `${previewPic ? `45px` : `90px`}`}}onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle} icon={faCamera} /></div>
                    
-                       {previewPic && <div className="image-preview">
+                       {previewPic && <div className="image-preview img-fluid">
                             <ImageCrop
                                 haveCropped={croppedImage && croppedImage}
                                 src={previewPic}
