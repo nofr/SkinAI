@@ -12,6 +12,8 @@ class ImageCrop extends PureComponent {
           unit: 'px',
           width: 224,
           height: 224,
+          x: 50,
+          y: 50
         },
     };
   }

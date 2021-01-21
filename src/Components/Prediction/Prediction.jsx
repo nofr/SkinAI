@@ -30,7 +30,7 @@ const Prediction = (props) => {
           <Card className='text-result'>
             <h1>Result:</h1>
             {result && result.result ? <h3> We highly recommened you to see a doctor </h3> :  <h3> Our diagnosis has concluded that a consultation is not necessary.</h3>}
-            <a href={`https://www.google.com/search?q=${'skin-cancer'}`} className="mt-3" target="_blank">Google Search for skin cancer</a>
+            <a href={"https://www.google.com/search?q=skin+cancer"} className="mt-3" target="_blank">Google Search for Skin Cancer</a>
           </Card>
         </div>
         <MapsModal />
