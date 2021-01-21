@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useEffect } from "react";
 import LoginModal from "../Modals/LoginModal";
 import SignupModal from "../Modals/SignupModal";
 import { Authentication } from "../../Contexts/Authentication";
@@ -19,6 +19,8 @@ const Navbar = (props) => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const { isLogged, setIsLogged } = useContext(Authentication);
+
+  const sessionID = localStorage.getItem('sessionID');
 
   const openLogin = () => {
     setIsLoginOpen(true);
@@ -78,7 +80,7 @@ const Navbar = (props) => {
           </li>
         )}
         {isLogged && (
-          <Link to="/user/:id">
+          <Link to={`/user/${sessionID}`}>
             <li className="nav-links">
               <FontAwesomeIcon color="#36d68b" icon={faUserMd} size="2x" />
             </li>
