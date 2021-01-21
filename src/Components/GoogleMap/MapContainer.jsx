@@ -61,7 +61,7 @@ class MapContainer extends React.Component {
   };
   render() {
     return (
-      <div className="mapContainer">
+      <div className="col-12">
         {this.state.position && (
           <Map lat={this.state.lat} lng={this.state.lng} />
         )}
