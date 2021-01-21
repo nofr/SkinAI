@@ -35,7 +35,7 @@ function App() {
           <Route path="/Prediction">
             <Prediction />
           </Route>
-          <Route path="/user/:id">
+          <Route path="/user">
             <UserHistory />
           </Route>
           <Route path="/">
