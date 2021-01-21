@@ -16,10 +16,10 @@ import { useEffect, useState } from "react";
 
 const Prediction = (props) => {
   const location = useLocation();
-  const [result, setResut] = useState(null)
+  const [result, setResult] = useState(null)
 
   useEffect(() => {
-    setResut(location.state.data)
+    setResult(location.state.data)
   }, [])
 
   return (
